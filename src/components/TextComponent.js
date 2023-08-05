@@ -54,6 +54,7 @@ export default function TextComponent(props){
         let textarea = document.getElementById("TextArea")
         textarea.select()
         document.execCommand('copy')
+        document.getSelection().removeAllRanges()
         props.showAlert("The Text is Copied to Clipboard Successfully", "success")
     }
 
@@ -62,19 +63,19 @@ export default function TextComponent(props){
             <div className="container">
                 <div className="mb-3">
                     <h2 className='my-4' style = {{color : props.mode === 'light' ? 'black' : 'white'}}>{props.heading}</h2>
-                    <textarea className="form-control" style = {{backgroundColor : props.mode === 'light' ? 'white' : '#170038', color : props.mode === 'light' ? 'black' : 'white'}} id="TextArea" onChange={changeValue} value = {text} rows="9" placeholder='Enter Your text'></textarea>
-                    <button className='btn btn-primary my-3' onClick={upperCase}>{props.upperButton}</button>
-                    <button className='btn btn-primary my-3 mx-2 ' onClick={lowerCase}>{props.lowerButton}</button>
-                    <button className='btn btn-primary my-3 mx-2 ' onClick={reverse}>{props.reverseButton}</button>
-                    <button className='btn btn-primary my-3 mx-2 ' onClick={titlecase}>{props.titlecaseButton}</button>
-                    <button className='btn btn-primary my-3 mx-2 ' onClick={copy}>{props.copyButton}</button>
-                    <button className='btn btn-primary my-3 mx-2 ' onClick={clearText}>{props.clearButton}</button>
+                    <textarea className="form-control" style = {{backgroundColor : props.mode === 'light' ? 'white' : '#0f2139', color : props.mode === 'light' ? 'black' : 'white'}} id="TextArea" onChange={changeValue} value = {text} rows="9" placeholder='Enter Your text here'></textarea>
+                    <button disabled = {text.replace(/\s/g, '').length === 0}className='btn btn-primary my-3' onClick={upperCase}>{props.upperButton}</button>
+                    <button disabled = {text.replace(/\s/g, '').length === 0}className='btn btn-primary my-3 mx-2 ' onClick={lowerCase}>{props.lowerButton}</button>
+                    <button disabled = {text.replace(/\s/g, '').length === 0}className='btn btn-primary my-3 mx-2 ' onClick={reverse}>{props.reverseButton}</button>
+                    <button disabled = {text.replace(/\s/g, '').length === 0}className='btn btn-primary my-3 mx-2 ' onClick={titlecase}>{props.titlecaseButton}</button>
+                    <button disabled = {text.replace(/\s/g, '').length === 0}className='btn btn-primary my-3 mx-2 ' onClick={copy}>{props.copyButton}</button>
+                    <button disabled = {text.replace(/\s/g, '').length === 0}className='btn btn-primary my-3 mx-2 ' onClick={clearText}>{props.clearButton}</button>
                 </div>
             </div>
 
             <div className="container" style = {{color : props.mode === 'light' ? 'black' : 'white'}}>
                 <h3>Text Summary</h3>
-                <p>There are <b>{text.split(/\S+/).length-1}</b> words and <b>{text.length}</b> Characters </p>
+                <p>There are <b>{text.split(/\S+/).length-1}</b> words and <b>{text.replace(/\s/g, "").length}</b> Characters </p>
                 <p>It tooks almost <b>{0.006 * text.split(/\S+/).length - 0.006}</b> Minutes to read </p>
             </div>
         </>

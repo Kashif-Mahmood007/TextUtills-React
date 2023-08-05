@@ -100,12 +100,12 @@ function App() {
           <Navbar title = "TextUtils" about = "About us" home = "Home" contact = "Get Connected" mode = {mode} changingMode = {toggleMode}/>
           <Alert alert = {alert}/>
           <Routes>
-          <Route exact path="/about" element = {
-              <AboutUS heading1 = "About kashif" heading2 = "About Khurram" heading3 = "About Faheem" mode = {mode} />
+            <Route exact path="/about" element = {
+              <AboutUS heading1 = "About textUtills " heading2 = "Free" heading3 = "Reliable" mode = {mode} />
             }>
             </Route>
             <Route exact path="/"  element  = {
-              <TextComponent heading = "Enter Text Here" upperButton = "UpperCase" lowerButton = "LowerCase" clearButton = "Clear" copyButton = "Copy Text" reverseButton = "Reverse" titlecaseButton = "TitleCase" mode = {mode} showAlert = {showAlert} />
+              <TextComponent heading = "Try TextUtills - Word Counter | Text Transformer | Reverse Text" upperButton = "UpperCase" lowerButton = "LowerCase" clearButton = "Clear" copyButton = "Copy Text" reverseButton = "Reverse" titlecaseButton = "TitleCase" mode = {mode} showAlert = {showAlert} />
             }>
             </Route>
             </Routes>

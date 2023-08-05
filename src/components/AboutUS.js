@@ -1,61 +1,69 @@
-import React, {useState} from 'react'
+// import React, {useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 
 export default function AboutUS(props){
 
-    const [darkLight, updateDarkLight] = useState({
-        color: "black",
-        backgroundColor: "white"
-    })
+    // const [myStyle, updatemyStyle] = useState({
+    //     color: "black",
+    //     backgroundColor: "white"
+    // })
 
-    const [buttonText, updateButtonText] = useState("Enable Dark Mode")
-    const [buttonColor, updateButtonColor] = useState({
-        color: "white",
-        backgroundColor: "black",
-        border: "0px "
-    })
+    // const [buttonText, updateButtonText] = useState("Enable Dark Mode")
+    // const [buttonColor, updateButtonColor] = useState({
+    //     color: "white",
+    //     backgroundColor: "black",
+    //     border: "0px "
+    // })
 
-    const toggleFunc = () => {
-        if(darkLight.color === 'black'){
-            updateDarkLight({
-                color: 'white',
-                backgroundColor: 'black',
-                border: '1px solid white'
-            })
-            updateButtonText("Enable Light Mode")
+    // const toggleFunc = () => {
+    //     if(myStyle.color === 'black'){
+    //         updatemyStyle({
+    //             color: 'white',
+    //             backgroundColor: 'black',
+    //             border: '1px solid white'
+    //         })
+    //         updateButtonText("Enable Light Mode")
 
-            updateButtonColor({
-                color: 'black',
-                backgroundColor: 'white',
-                border: "0px "
-            })
-        }
+    //         updateButtonColor({
+    //             color: 'black',
+    //             backgroundColor: 'white',
+    //             border: "0px "
+    //         })
+    //     }
 
-        else{
-            updateDarkLight({
-                color: 'black',
-                backgroundColor: 'white',
-            })
-            updateButtonText("Enable Dark Mode")
+    //     else{
+    //         updatemyStyle({
+    //             color: 'black',
+    //             backgroundColor: 'white',
+    //         })
+    //         updateButtonText("Enable Dark Mode")
 
-            updateButtonColor({
-                color: 'white',
-                backgroundColor: 'black',
-                border: "0px "
-            })
-        }
+    //         updateButtonColor({
+    //             color: 'white',
+    //             backgroundColor: 'black',
+    //             border: "0px "
+    //         })
+    //     }
+    // }
+
+    
+    let myStyle = {
+        color: props.mode === 'dark' ? 'white' : 'black',
+        backgroundColor : props.mode === 'dark' ? '#0f2139' : 'white'
     }
 
+    console.log()
 
     return(
         <>
-        <div className="container my-4" style = {darkLight}>
-            <h2 className='mx-3 my-4' style={{paddingTop : '5px'}}>About US</h2>
-            <div className="accordion" id="accordionPanelsStayOpenExample">
-            <div className="accordion-item" style = {darkLight}>
+        <div className="container my-5" style = {myStyle}>
+            <h2 className='mx-3 my-4' style={{paddingTop : '15px',}}>About US</h2>
+            <div className="accordion" id="accordionPanelsStayOpenExample" style = {{padding: "0px 14px 33px 14px"}}>
+            <div className="accordion-item" style = {myStyle}>
                 <h2 className="accordion-header">
-                <button className="accordion-button" type="button" style = {darkLight} data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                <button className="accordion-button" type="button" style = {myStyle} data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                     {props.heading1}
                 </button>
                 </h2>
@@ -65,9 +73,9 @@ export default function AboutUS(props){
                 </div>
                 </div>
             </div>
-            <div className="accordion-item" style = {darkLight}>
+            <div className="accordion-item" style = {myStyle}>
                 <h2 className="accordion-header">
-                <button className="accordion-button collapsed" style = {darkLight} type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                <button className="accordion-button collapsed" style = {myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
                     {props.heading2}
                 </button>
                 </h2>
@@ -77,9 +85,9 @@ export default function AboutUS(props){
                 </div>
                 </div>
             </div>
-            <div className="accordion-item" style = {darkLight}>
+            <div className="accordion-item" style = {myStyle}>
                 <h2 className="accordion-header">
-                <button className="accordion-button collapsed" style = {darkLight} type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                <button className="accordion-button collapsed" style = {myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
                     {props.heading3}
                 </button>
                 </h2>
@@ -90,7 +98,7 @@ export default function AboutUS(props){
                 </div>
             </div>
             </div>
-            <button className="btn btn-primary my-3" onClick={toggleFunc} style = {buttonColor}>{buttonText}</button>
+            {/* <button className="btn btn-primary my-3" onClick={toggleFunc} style = {buttonColor}>{buttonText}</button> */}
         </div>
         </>
     )
